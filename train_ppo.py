@@ -42,12 +42,22 @@ def log_params(logger, alg_kwargs):
         for key in alg_kwargs.keys():
             out.write('{0} = {1}\n'.format(key, alg_kwargs[key]))
 
+def clean_logs(log_dir):
+    for the_file in os.listdir(log_dir):
+        file_path = os.path.join(log_dir, the_file)
+        try:
+            if os.path.isfile(file_path):
+                os.unlink(file_path)
+        except Exception as e:
+            print(e)
+
 if __name__ == '__main__':
     policy = sys.argv[1]
     env_type = 'mara_{0}'.format(policy)
     alg_kwargs = get_learn_function_defaults('ppo2', env_type)
     # timedate = datetime.now().strftime('%Y-%m-%d_%Hh%Mmin')
     logdir = 'logs/{0}/ppo2_{1}/'.format(alg_kwargs['env_name'], policy)
+    clean_logs(logdir)
     format_strs = os.getenv('MARA_LOG_FORMAT', 'stdout,log,csv,tensorboard').split(',')
     logger.configure(os.path. abspath(logdir), format_strs)
     log_params(logger, alg_kwargs)
