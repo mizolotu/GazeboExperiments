@@ -32,42 +32,17 @@ def get_learn_function_defaults(alg, env_type):
     return kwargs
 
 def make_env():
-    print('make1')
-    print(alg_kwargs)
     env = gym.make(alg_kwargs['env_name'])
-    print('make2')
     env.set_episode_size(alg_kwargs['nsteps'])
-    print('make3')
     env = bench.Monitor(env, logger.get_dir() and os.path.join(logger.get_dir()), allow_early_resets=True)
     return env
 
 def log_params(logger, alg_kwargs):
     with open(logger.get_dir() + "/parameters.txt", 'w') as out:
-        out.write(
-            'num_layers = ' + str(alg_kwargs['num_layers']) + '\n'
-            + 'num_hidden = ' + str(alg_kwargs['num_hidden']) + '\n'
-            + 'layer_norm = ' + str(alg_kwargs['layer_norm']) + '\n'
-            + 'nsteps = ' + str(alg_kwargs['nsteps']) + '\n'
-            + 'nminibatches = ' + str(alg_kwargs['nminibatches']) + '\n'
-            + 'lam = ' + str(alg_kwargs['lam']) + '\n'
-            + 'gamma = ' + str(alg_kwargs['gamma']) + '\n'
-            + 'noptepochs = ' + str(alg_kwargs['noptepochs']) + '\n'
-            + 'log_interval = ' + str(alg_kwargs['log_interval']) + '\n'
-            + 'ent_coef = ' + str(alg_kwargs['ent_coef']) + '\n'
-            + 'cliprange = ' + str(alg_kwargs['cliprange']) + '\n'
-            + 'vf_coef = ' + str(alg_kwargs['vf_coef']) + '\n'
-            + 'max_grad_norm = ' + str(alg_kwargs['max_grad_norm']) + '\n'
-            + 'seed = ' + str(alg_kwargs['seed']) + '\n'
-            + 'value_network = ' + alg_kwargs['value_network'] + '\n'
-            + 'network = ' + alg_kwargs['network'] + '\n'
-            + 'total_timesteps = ' + str(alg_kwargs['total_timesteps']) + '\n'
-            + 'save_interval = ' + str(alg_kwargs['save_interval']) + '\n'
-            + 'env_name = ' + alg_kwargs['env_name'] + '\n'
-            + 'transfer_path = ' + str(alg_kwargs['transfer_path'])
-        )
+        for key in alg_kwargs.keys():
+            out.write('{0} = {1}\n'.format(key, alg_kwargs[key]))
 
 if __name__ == '__main__':
-
     policy = sys.argv[1]
     env_type = 'mara_{0}'.format(policy)
     alg_kwargs = get_learn_function_defaults('ppo2', env_type)
@@ -76,17 +51,12 @@ if __name__ == '__main__':
     format_strs = os.getenv('MARA_LOG_FORMAT', 'stdout,log,csv,tensorboard').split(',')
     logger.configure(os.path. abspath(logdir), format_strs)
     log_params(logger, alg_kwargs)
-    print('1')
     env = DummyVecEnv([make_env])
-    print('2')
     learn = get_learn_function('ppo2')
-    print('3')
     transfer_path = alg_kwargs['transfer_path']
     alg_kwargs.pop('env_name')
     alg_kwargs.pop('trained_path')
     alg_kwargs.pop('transfer_path')
-    print(alg_kwargs)
-    print(learn)
     if transfer_path is not None:
         _ = learn(env=env,load_path=transfer_path, **alg_kwargs)
     else:
