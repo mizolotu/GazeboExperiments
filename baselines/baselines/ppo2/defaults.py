@@ -56,7 +56,7 @@ def mara_mlp():
 
 def mara_lstm():
     return dict(
-        nlstm = 256,
+        nlstm = 64,
         layer_norm = False,
         # nbatch = nenvs * nsteps
         # nbatch_train = nbatch // nminibatches
@@ -64,7 +64,7 @@ def mara_lstm():
         # assert batchsize == nbatch_train >= nsteps
         nsteps = 1024,
         #otherwise, last minibatch gets noisy gradient,
-        nminibatches = 2, #batchsize = nevn * nsteps // nminibatches
+        nminibatches = 1, #batchsize = nevn * nsteps // nminibatches
         lam = 0.95,
         gamma = 0.99,
         noptepochs = 10,

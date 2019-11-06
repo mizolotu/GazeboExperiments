@@ -37,6 +37,16 @@ class Model(object):
             # act_model that is used for sampling
             act_model = policy(nbatch_act, 1, sess)
 
+            total_parameters = 0
+            for variable in tf.trainable_variables():
+                shape = variable.get_shape()
+                variable_parameters = 1
+                for dim in shape:
+                    variable_parameters *= dim.value
+                total_parameters += variable_parameters
+            print('\nNumber of trainable parameters: {0}\n'.format(total_parameters))
+            self.trainable_parameters = total_parameters 
+
             # Train model for training
             if microbatch_size is None:
                 train_model = policy(nbatch_train, nsteps, sess)

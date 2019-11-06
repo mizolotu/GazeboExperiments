@@ -174,7 +174,7 @@ def learn(*, network, env, total_timesteps, eval_env = None, seed=None, nsteps=2
                     slices = (arr[mbinds] for arr in (obs, returns, masks, actions, values, neglogpacs))
                     mblossvals.append(model.train(lrnow, cliprangenow, *slices))
         else: # recurrent version
-            # print("I am in reccurent version")
+            print("I am in reccurent version")
             assert nenvs % nminibatches == 0
             envsperbatch = nenvs // nminibatches
             envinds = np.arange(nenvs)
@@ -183,6 +183,7 @@ def learn(*, network, env, total_timesteps, eval_env = None, seed=None, nsteps=2
                 np.random.shuffle(envinds)
                 for start in range(0, nenvs, envsperbatch):
                     end = start + envsperbatch
+                    print(_, start, end)
                     mbenvinds = envinds[start:end]
                     mbflatinds = flatinds[mbenvinds].ravel()
                     slices = (arr[mbflatinds] for arr in (obs, returns, masks, actions, values, neglogpacs))
