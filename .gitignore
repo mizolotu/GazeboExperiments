@@ -106,3 +106,8 @@ venv.bak/
 # logs
 logs/
 logs/*
+
+# idea
+.idea/
+.idea/*
+
