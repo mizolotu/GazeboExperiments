@@ -79,6 +79,8 @@ if __name__ == '__main__':
     alg_kwargs.pop('env_name')
     alg_kwargs.pop('trained_path')
     alg_kwargs.pop('transfer_path')
+    print(alg_kwargs)
+    print(learn)
     if transfer_path is not None:
         _ = learn(env=env,load_path=transfer_path, **alg_kwargs)
     else:
