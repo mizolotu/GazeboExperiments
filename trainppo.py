@@ -68,8 +68,8 @@ def log_params(logger, alg_kwargs):
 
 if __name__ == '__main__':
 
-    policy = sys.argv[1]
-    env_type = 'mara_{0}'.format(policy)
+    #policy = sys.argv[1]
+    env_type = 'mara_{0}'.format('mlp') #policy)
     alg_kwargs = get_learn_function_defaults('ppo2', env_type)
     timedate = datetime.now().strftime('%Y-%m-%d_%Hh%Mmin')
     logdir = 'logs/' + alg_kwargs['env_name'] + '/ppo2_mlp/' + timedate
