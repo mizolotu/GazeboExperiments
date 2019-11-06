@@ -46,8 +46,8 @@ if __name__ == '__main__':
     policy = sys.argv[1]
     env_type = 'mara_{0}'.format(policy)
     alg_kwargs = get_learn_function_defaults('ppo2', env_type)
-    timedate = datetime.now().strftime('%Y-%m-%d_%Hh%Mmin')
-    logdir = 'logs/' + alg_kwargs['env_name'] + '/ppo2_mlp/' + timedate
+    # timedate = datetime.now().strftime('%Y-%m-%d_%Hh%Mmin')
+    logdir = 'logs/{0}/ppo2_{1}/'.format(alg_kwargs['env_name'], policy)
     format_strs = os.getenv('MARA_LOG_FORMAT', 'stdout,log,csv,tensorboard').split(',')
     logger.configure(os.path. abspath(logdir), format_strs)
     log_params(logger, alg_kwargs)
@@ -57,10 +57,6 @@ if __name__ == '__main__':
     alg_kwargs.pop('env_name')
     alg_kwargs.pop('trained_path')
     alg_kwargs.pop('transfer_path')
-    if transfer_path is not None:
-        _ = learn(env=env,load_path=transfer_path, **alg_kwargs)
-    else:
-        _ = learn(env=env, **alg_kwargs)
-
+    learner = learn(env=env,load_path=transfer_path, **alg_kwargs)
     env.dummy().gg2().close()
     os.kill(os.getpid(), 9)

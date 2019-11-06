@@ -45,7 +45,7 @@ class Model(object):
                     variable_parameters *= dim.value
                 total_parameters += variable_parameters
             print('\nNumber of trainable parameters: {0}\n'.format(total_parameters))
-            self.trainable_parameters = total_parameters 
+            self.trainable_variables = total_parameters
 
             # Train model for training
             if microbatch_size is None:

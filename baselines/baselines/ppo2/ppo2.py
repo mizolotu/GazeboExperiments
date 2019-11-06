@@ -204,6 +204,7 @@ def learn(*, network, env, total_timesteps, eval_env = None, seed=None, nsteps=2
             # Calculates if value function is a good predicator of the returns (ev > 1)
             # or if it's just worse than predicting nothing (ev =< 0)
             ev = explained_variance(values, returns)
+            logger.logkv("misc/trainable_variables", model.trainable_variables)
             logger.logkv("misc/serial_timesteps", update*nsteps)
             logger.logkv("misc/nupdates", update)
             logger.logkv("misc/total_timesteps", update*nbatch)
@@ -229,7 +230,6 @@ def learn(*, network, env, total_timesteps, eval_env = None, seed=None, nsteps=2
             if save_interval != 0 and mean_rewbuffer > best_mean_rewbuffer:
                 best_mean_rewbuffer = mean_rewbuffer
                 print('Saving to', best_savepath)
-                model.save(best_savepath)
 
             if (update % save_interval == 0 or update == 1):
                 checkdir = osp.join(logger.get_dir(), 'checkpoints')

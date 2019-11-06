@@ -103,10 +103,6 @@ venv.bak/
 # mypy
 .mypy_cache/
 
-# logs
-logs/
-logs/*
-
 # idea
 .idea/
 .idea/*
