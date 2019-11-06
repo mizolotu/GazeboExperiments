@@ -1,0 +1,33 @@
+Logging to /home/gz/GazeboExperiments/logs/MARARandomTarget-v0/ppo2_mlp/2019-11-06_11h26min
+Stepping environment...
+Done.
+--------------------------------------
+| eplenmean               | 1.02e+03 |
+| fps                     | 75       |
+| loss/approxkl           | 0.0209   |
+| loss/clipfrac           | 0.18     |
+| loss/policy_entropy     | 8.49     |
+| loss/policy_loss        | -0.0316  |
+| loss/value_loss         | 99.1     |
+| misc/explained_variance | -0.159   |
+| misc/nupdates           | 1        |
+| misc/serial_timesteps   | 1.02e+03 |
+| misc/time_elapsed       | 13.5     |
+| misc/total_timesteps    | 1.02e+03 |
+| reward/eprewmean_smooth | -882     |
+| stats/ep_dist_max       | 0.686    |
+| stats/ep_dist_mean      | 0.428    |
+| stats/ep_dist_min       | 0.0662   |
+| stats/ep_dist_skew      | -0.595   |
+| stats/ep_dist_std       | 0.121    |
+| stats/ep_rew_max        | -0.284   |
+| stats/ep_rew_mean       | -0.861   |
+| stats/ep_rew_min        | -0.974   |
+| stats/ep_rew_skew       | 2.38     |
+| stats/ep_rew_std        | 0.112    |
+| stats/num_coll          | 125      |
+| stats/target_x          | -0.5     |
+| stats/target_y          | 0.2      |
+| stats/target_z          | 0.25     |
+--------------------------------------
+Stepping environment...

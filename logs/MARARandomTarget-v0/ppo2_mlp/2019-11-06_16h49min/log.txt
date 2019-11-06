@@ -1,0 +1,157 @@
+Logging to /home/gz/GazeboExperiments/logs/MARARandomTarget-v0/ppo2_mlp/2019-11-06_16h49min
+Stepping environment...
+Done.
+--------------------------------------
+| eplenmean               | 1.02e+03 |
+| fps                     | 29       |
+| loss/approxkl           | 0.0169   |
+| loss/clipfrac           | 0.158    |
+| loss/policy_entropy     | 8.5      |
+| loss/policy_loss        | -0.0254  |
+| loss/value_loss         | 100      |
+| misc/explained_variance | -0.135   |
+| misc/nupdates           | 1        |
+| misc/serial_timesteps   | 1.02e+03 |
+| misc/time_elapsed       | 34.2     |
+| misc/total_timesteps    | 1.02e+03 |
+| reward/eprewmean_smooth | -887     |
+| stats/ep_dist_max       | 0.683    |
+| stats/ep_dist_mean      | 0.432    |
+| stats/ep_dist_min       | 0.0622   |
+| stats/ep_dist_skew      | -0.58    |
+| stats/ep_dist_std       | 0.116    |
+| stats/ep_rew_max        | -0.269   |
+| stats/ep_rew_mean       | -0.866   |
+| stats/ep_rew_min        | -0.974   |
+| stats/ep_rew_skew       | 2.6      |
+| stats/ep_rew_std        | 0.105    |
+| stats/num_coll          | 111      |
+| stats/target_x          | -0.5     |
+| stats/target_y          | 0.2      |
+| stats/target_z          | 0.25     |
+--------------------------------------
+Stepping environment...
+Done.
+--------------------------------------
+| eplenmean               | 1.02e+03 |
+| fps                     | 90       |
+| loss/approxkl           | 0.00972  |
+| loss/clipfrac           | 0.0902   |
+| loss/policy_entropy     | 8.52     |
+| loss/policy_loss        | -0.015   |
+| loss/value_loss         | 98.2     |
+| misc/explained_variance | -0.186   |
+| misc/nupdates           | 2        |
+| misc/serial_timesteps   | 2.05e+03 |
+| misc/time_elapsed       | 45.7     |
+| misc/total_timesteps    | 2.05e+03 |
+| reward/eprewmean_smooth | -887     |
+| stats/ep_dist_max       | 0.677    |
+| stats/ep_dist_mean      | 0.431    |
+| stats/ep_dist_min       | 0.0528   |
+| stats/ep_dist_skew      | -0.63    |
+| stats/ep_dist_std       | 0.116    |
+| stats/ep_rew_max        | -0.234   |
+| stats/ep_rew_mean       | -0.866   |
+| stats/ep_rew_min        | -0.973   |
+| stats/ep_rew_skew       | 2.39     |
+| stats/ep_rew_std        | 0.104    |
+| stats/num_coll          | 91       |
+| stats/target_x          | -0.5     |
+| stats/target_y          | -0.2     |
+| stats/target_z          | 0.25     |
+--------------------------------------
+Stepping environment...
+Done.
+--------------------------------------
+| eplenmean               | 1.02e+03 |
+| fps                     | 80       |
+| loss/approxkl           | 0.0152   |
+| loss/clipfrac           | 0.135    |
+| loss/policy_entropy     | 8.52     |
+| loss/policy_loss        | -0.0198  |
+| loss/value_loss         | 94.7     |
+| misc/explained_variance | -0.108   |
+| misc/nupdates           | 3        |
+| misc/serial_timesteps   | 3.07e+03 |
+| misc/time_elapsed       | 58.4     |
+| misc/total_timesteps    | 3.07e+03 |
+| reward/eprewmean_smooth | -885     |
+| stats/ep_dist_max       | 0.679    |
+| stats/ep_dist_mean      | 0.427    |
+| stats/ep_dist_min       | 0.0192   |
+| stats/ep_dist_skew      | -0.583   |
+| stats/ep_dist_std       | 0.12     |
+| stats/ep_rew_max        | -0.0091  |
+| stats/ep_rew_mean       | -0.862   |
+| stats/ep_rew_min        | -0.973   |
+| stats/ep_rew_skew       | 2.54     |
+| stats/ep_rew_std        | 0.111    |
+| stats/num_coll          | 107      |
+| stats/target_x          | -0.5     |
+| stats/target_y          | 0.2      |
+| stats/target_z          | 0.25     |
+--------------------------------------
+Stepping environment...
+Done.
+--------------------------------------
+| eplenmean               | 1.02e+03 |
+| fps                     | 72       |
+| loss/approxkl           | 0.0159   |
+| loss/clipfrac           | 0.139    |
+| loss/policy_entropy     | 8.47     |
+| loss/policy_loss        | -0.0214  |
+| loss/value_loss         | 92.6     |
+| misc/explained_variance | -0.112   |
+| misc/nupdates           | 4        |
+| misc/serial_timesteps   | 4.1e+03  |
+| misc/time_elapsed       | 72.5     |
+| misc/total_timesteps    | 4.1e+03  |
+| reward/eprewmean_smooth | -885     |
+| stats/ep_dist_max       | 0.678    |
+| stats/ep_dist_mean      | 0.427    |
+| stats/ep_dist_min       | 0.036    |
+| stats/ep_dist_skew      | -0.701   |
+| stats/ep_dist_std       | 0.116    |
+| stats/ep_rew_max        | -0.164   |
+| stats/ep_rew_mean       | -0.863   |
+| stats/ep_rew_min        | -0.973   |
+| stats/ep_rew_skew       | 2.69     |
+| stats/ep_rew_std        | 0.111    |
+| stats/num_coll          | 117      |
+| stats/target_x          | -0.5     |
+| stats/target_y          | 0.2      |
+| stats/target_z          | 0.25     |
+--------------------------------------
+Stepping environment...
+Done.
+--------------------------------------
+| eplenmean               | 1.02e+03 |
+| fps                     | 58       |
+| loss/approxkl           | 0.016    |
+| loss/clipfrac           | 0.126    |
+| loss/policy_entropy     | 8.47     |
+| loss/policy_loss        | -0.0202  |
+| loss/value_loss         | 89.5     |
+| misc/explained_variance | -0.116   |
+| misc/nupdates           | 5        |
+| misc/serial_timesteps   | 5.12e+03 |
+| misc/time_elapsed       | 90.1     |
+| misc/total_timesteps    | 5.12e+03 |
+| reward/eprewmean_smooth | -884     |
+| stats/ep_dist_max       | 0.685    |
+| stats/ep_dist_mean      | 0.426    |
+| stats/ep_dist_min       | 0.0479   |
+| stats/ep_dist_skew      | -0.63    |
+| stats/ep_dist_std       | 0.119    |
+| stats/ep_rew_max        | -0.214   |
+| stats/ep_rew_mean       | -0.861   |
+| stats/ep_rew_min        | -0.974   |
+| stats/ep_rew_skew       | 2.52     |
+| stats/ep_rew_std        | 0.112    |
+| stats/num_coll          | 110      |
+| stats/target_x          | -0.5     |
+| stats/target_y          | 0.2      |
+| stats/target_z          | 0.25     |
+--------------------------------------
+Stepping environment...
