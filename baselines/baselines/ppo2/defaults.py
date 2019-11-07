@@ -72,7 +72,7 @@ def mara_lstm():
         transfer_path = None,
     )
 
-def mara_cnn1d():
+def mara_cnn():
     return dict(
         num_layers = 64,
         num_hidden = 64,
@@ -90,7 +90,7 @@ def mara_cnn1d():
         max_grad_norm = 0.5,
         seed = 0,
         value_network = 'shared',
-        network = 'lstm',
+        network = 'cnn1d',
         total_timesteps = 8640000,
         save_interval = 10,
         env_name = 'MARARandomTarget-v0',
