@@ -107,6 +107,7 @@ def mlp(num_layers=2, num_hidden=64, activation=tf.tanh, layer_norm=False):
 def cnn1d(num_hidden=64, nf=64, rf=2, stride=1, activation=tf.tanh, layer_norm=False):
     def network_fn(X):
         h = tf.layers.conv1d(X, filters=nf, kernel_size=rf, strides=stride, activation='relu')
+        h = tf.layers.flatten(h)
         h = activation(fc(h, 'fc1', nh=num_hidden, init_scale=np.sqrt(2)))
         return h
     return network_fn

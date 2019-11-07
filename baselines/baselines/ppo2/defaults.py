@@ -77,6 +77,8 @@ def mara_cnn():
         num_stack = 4,
         num_hidden = 64,
         nf=32,
+        rf=4,
+        stride=1,
         layer_norm = False,
         nsteps = 1024,
         nminibatches = 1, #batchsize = nevn * nsteps // nminibatches
