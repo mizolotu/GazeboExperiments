@@ -66,7 +66,10 @@ if __name__ == '__main__':
     format_strs = os.getenv('MARA_LOG_FORMAT', 'stdout,log,csv,tensorboard').split(',')
     logger.configure(os.path. abspath(logdir), format_strs)
     log_params(logger, alg_kwargs)
-    env = DummyVecEnv([make_env])
+    if policy == 'cnn':
+        env = DummyVecEnv([make_env(stack=4)])
+    else:
+        env = DummyVecEnv([make_env])
     learn = get_learn_function('ppo2')
     transfer_path = alg_kwargs['transfer_path']
     alg_kwargs.pop('env_name')
