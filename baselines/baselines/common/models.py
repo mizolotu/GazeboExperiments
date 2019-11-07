@@ -108,7 +108,7 @@ def cnn1d(num_layers=2, num_hidden=64, rf=2, stride=1, activation=tf.tanh, layer
     def network_fn(X):
         h = X
         for i in range(num_layers):
-            h = tf.keras.layers.Conv1D(filters=num_hidden, kernel_size=rf, strides=stride, activation='relu')(h)
+            h = tf.layers.conv1d(h, filters=num_hidden, kernel_size=rf, strides=stride, activation='relu')
         h = activation(fc(h, 'fc1', nh=num_hidden, init_scale=np.sqrt(2)))
         return h
     return network_fn
