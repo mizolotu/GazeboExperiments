@@ -75,8 +75,8 @@ def mara_lstm():
 def mara_cnn():
     return dict(
         num_stack = 4,
-        num_hidden = 64,
-        nf=32,
+        num_hidden = 32,
+        num_dense = 64,
         rf=4,
         stride=1,
         layer_norm = False,
