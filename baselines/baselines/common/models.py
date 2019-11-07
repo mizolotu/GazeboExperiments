@@ -129,7 +129,6 @@ def impala_cnn(**conv_kwargs):
 def cnn_small(**conv_kwargs):
     def network_fn(X):
         h = tf.cast(X, tf.float32) / 255.
-
         activ = tf.nn.relu
         h = activ(conv(h, 'c1', nf=8, rf=8, stride=4, init_scale=np.sqrt(2), **conv_kwargs))
         h = activ(conv(h, 'c2', nf=16, rf=4, stride=2, init_scale=np.sqrt(2), **conv_kwargs))

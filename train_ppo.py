@@ -32,11 +32,16 @@ def get_learn_function_defaults(alg, env_type):
         kwargs = {}
     return kwargs
 
-def make_env(stack=None):
+def make_env():
     env = gym.make(alg_kwargs['env_name'])
     env.set_episode_size(alg_kwargs['nsteps'])
-    if stack is not None:
-        env = FrameStack(env, stack)
+    env = bench.Monitor(env, logger.get_dir() and os.path.join(logger.get_dir()), allow_early_resets=True)
+    return env
+
+def make_cnn_env():
+    env = gym.make(alg_kwargs['env_name'])
+    env.set_episode_size(alg_kwargs['nsteps'])
+    env = FrameStack(env, alg_kwargs['num_stack'])
     env = bench.Monitor(env, logger.get_dir() and os.path.join(logger.get_dir()), allow_early_resets=True)
     return env
 
@@ -67,7 +72,8 @@ if __name__ == '__main__':
     logger.configure(os.path. abspath(logdir), format_strs)
     log_params(logger, alg_kwargs)
     if policy == 'cnn':
-        env = DummyVecEnv([make_env(stack=4)])
+        env = DummyVecEnv([make_cnn_env])
+        alg_kwargs.pop('num_stack')
     else:
         env = DummyVecEnv([make_env])
     learn = get_learn_function('ppo2')
