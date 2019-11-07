@@ -104,7 +104,7 @@ def mlp(num_layers=2, num_hidden=64, activation=tf.tanh, layer_norm=False):
 
 
 @register("cnn1d")
-def cnn1d(num_layers=2, num_hidden=64, rf=8, stride=4, activation=tf.tanh, layer_norm=False):
+def cnn1d(num_layers=2, num_hidden=64, rf=2, stride=1, activation=tf.tanh, layer_norm=False):
     def network_fn(X):
         h = X
         for i in range(num_layers):

@@ -59,7 +59,7 @@ class LazyFrames(object):
     def _force(self):
         if self._out is None:
             self._out = np.vstack(self._frames)
-            self._out = self._out.reshape(1, self._out.shape[0], self._out.shape[1])
+            #self._out = self._out.reshape(1, self._out.shape[0], self._out.shape[1])
             self._frames = None
         return self._out
 
