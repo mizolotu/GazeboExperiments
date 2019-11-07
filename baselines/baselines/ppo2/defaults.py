@@ -75,8 +75,8 @@ def mara_lstm():
 def mara_cnn():
     return dict(
         num_stack = 4,
-        num_layers = 64,
         num_hidden = 64,
+        nf=32,
         layer_norm = False,
         nsteps = 1024,
         nminibatches = 1, #batchsize = nevn * nsteps // nminibatches
