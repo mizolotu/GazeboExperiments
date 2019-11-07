@@ -6,7 +6,7 @@ from importlib import import_module
 from baselines import bench, logger
 from baselines.ppo2 import ppo2
 from baselines.common.vec_env.dummy_vec_env import DummyVecEnv
-from baselines.common.atari_wrappers import FrameStack
+from baselines.common.mara_wrappers import FrameStack
 
 ncpu = multiprocessing.cpu_count()
 config = tf.ConfigProto(allow_soft_placement=True, intra_op_parallelism_threads=ncpu, inter_op_parallelism_threads=ncpu, log_device_placement=False)
