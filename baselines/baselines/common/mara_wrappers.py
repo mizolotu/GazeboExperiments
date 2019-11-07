@@ -22,7 +22,7 @@ class FrameStack(gym.Wrapper):
         self.k = k
         self.frames = deque([], maxlen=k)
         shp = env.observation_space.shape
-        self.observation_space = spaces.Box(low=0, high=255, shape=(shp[:-1] + (shp[-1] * k,)), dtype=env.observation_space.dtype)
+        self.observation_space = spaces.Box(shape=(shp[:-1] + (k, shp[-1])), dtype=env.observation_space.dtype)
 
     def reset(self):
         ob = self.env.reset()
@@ -54,6 +54,7 @@ class LazyFrames(object):
     def _force(self):
         if self._out is None:
             self._out = np.vstack(self._frames)
+            self._out = self._out.reshape(1, self._out.shape[0], self._out.shape[1])
             self._frames = None
         return self._out
 
