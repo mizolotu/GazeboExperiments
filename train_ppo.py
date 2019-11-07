@@ -62,7 +62,8 @@ def clean_logs(log_dir):
             print(e)
 
 if __name__ == '__main__':
-    policy = sys.argv[1]
+    policy = sys.argv[1].split('_')[0]
+    hidden = sys.argv[1].split('_')[1]
     env_type = 'mara_{0}'.format(policy)
     alg_kwargs = get_learn_function_defaults('ppo2', env_type)
     # timedate = datetime.now().strftime('%Y-%m-%d_%Hh%Mmin')
@@ -78,6 +79,8 @@ if __name__ == '__main__':
         env = DummyVecEnv([make_env])
     learn = get_learn_function('ppo2')
     transfer_path = alg_kwargs['transfer_path']
+    if hidden != '':
+        alg_kwargs['num_hidden'] = int(hidden)
     alg_kwargs.pop('env_name')
     alg_kwargs.pop('transfer_path')
     learner = learn(env=env,load_path=transfer_path, **alg_kwargs)
