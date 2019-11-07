@@ -6,6 +6,7 @@ from importlib import import_module
 from baselines import bench, logger
 from baselines.ppo2 import ppo2
 from baselines.common.vec_env.dummy_vec_env import DummyVecEnv
+from baselines.common.atari_wrappers import FrameStack
 
 ncpu = multiprocessing.cpu_count()
 config = tf.ConfigProto(allow_soft_placement=True, intra_op_parallelism_threads=ncpu, inter_op_parallelism_threads=ncpu, log_device_placement=False)
@@ -31,9 +32,11 @@ def get_learn_function_defaults(alg, env_type):
         kwargs = {}
     return kwargs
 
-def make_env():
+def make_env(stack=None):
     env = gym.make(alg_kwargs['env_name'])
     env.set_episode_size(alg_kwargs['nsteps'])
+    if stack is not None:
+        env = FrameStack(env, stack)
     env = bench.Monitor(env, logger.get_dir() and os.path.join(logger.get_dir()), allow_early_resets=True)
     return env
 
