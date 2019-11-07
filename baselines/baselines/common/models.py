@@ -103,6 +103,16 @@ def mlp(num_layers=2, num_hidden=64, activation=tf.tanh, layer_norm=False):
     return network_fn
 
 
+@register("cnn1d")
+def cnn1d(num_layers=2, num_hidden=64, rf=8, stride=4, activation=tf.tanh):
+    def network_fn(X):
+        h = X
+        for i in range(num_layers):
+            h = tf.keras.layers.Conv1D(filters=num_hidden, kernel_size=rf, strides=stride, activation='relu')(h)
+        h = activation(fc(h, 'fc1', nh=num_hidden, init_scale=np.sqrt(2)))
+        return h
+    return network_fn
+
 @register("cnn")
 def cnn(**conv_kwargs):
     def network_fn(X):
