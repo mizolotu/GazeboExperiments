@@ -67,7 +67,6 @@ if __name__ == '__main__':
     learn = get_learn_function('ppo2')
     transfer_path = alg_kwargs['transfer_path']
     alg_kwargs.pop('env_name')
-    alg_kwargs.pop('trained_path')
     alg_kwargs.pop('transfer_path')
     learner = learn(env=env,load_path=transfer_path, **alg_kwargs)
     env.dummy().gg2().close()
