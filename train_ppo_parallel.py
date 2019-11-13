@@ -72,7 +72,7 @@ if __name__ == '__main__':
     logger.configure(os.path. abspath(logdir), format_strs)
     log_params(logger, alg_kwargs)
 
-    env = make_vec_env(alg_kwargs['env_name'], env_type, 16, 0, reward_scale=1.0)
+    env = make_vec_env(alg_kwargs['env_name'], env_type, 4, 0, reward_scale=1.0)
 
     learn = get_learn_function('ppo2')
     if alg_kwargs['transfer_path'] is not None and os.path.isfile(logdir  + alg_kwargs['transfer_path']):
