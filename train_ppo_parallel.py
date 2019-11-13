@@ -97,6 +97,8 @@ if __name__ == '__main__':
     learn = get_learn_function('ppo2')
     if alg_kwargs['transfer_path'] is not None and os.path.isfile(logdir  + alg_kwargs['transfer_path']):
         transfer_path = logdir + alg_kwargs['transfer_path']
+    else:
+        transfer_path = None
     if hidden != '':
         alg_kwargs['num_hidden'] = int(hidden)
     alg_kwargs.pop('env_name')
