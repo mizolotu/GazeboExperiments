@@ -68,7 +68,7 @@ if __name__ == '__main__':
     alg_kwargs = get_learn_function_defaults('ppo2', env_type)
     # timedate = datetime.now().strftime('%Y-%m-%d_%Hh%Mmin')
     logdir = 'logs/{0}/ppo2_{1}_{2}/'.format(alg_kwargs['env_name'], policy, hidden)
-    tb_dir = logger + '/tb'
+    tb_dir = logdir + '/tb'
     if os.path.isdir(logdir): clean_logs(tb_dir)
     format_strs = os.getenv('MARA_LOG_FORMAT', 'stdout,log,csv,tensorboard').split(',')
     logger.configure(os.path. abspath(logdir), format_strs)
