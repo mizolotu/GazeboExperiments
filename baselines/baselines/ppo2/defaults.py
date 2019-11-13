@@ -45,7 +45,7 @@ def mara_mlp():
         total_timesteps = 8640000 * 5,
         save_interval = 10,
         env_name = 'MARARandomTarget-v0',
-        transfer_path = None,
+        transfer_path = 'checkpoints/best',
     )
 
 def mara_lstm():
