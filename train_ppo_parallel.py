@@ -1,13 +1,10 @@
-import os, sys, time, gym, gym_gazebo2, multiprocessing, shutil
+import os, sys, gym, gym_gazebo2, multiprocessing, shutil
 import tensorflow as tf
 
-from datetime import datetime
 from importlib import import_module
 from baselines import bench, logger
-from baselines.ppo2 import ppo2
-from baselines.common.vec_env.dummy_vec_env import DummyVecEnv
 from baselines.common.mara_wrappers import FrameStack
-from baselines.common.cmd_util import common_arg_parser, parse_unknown_args, make_vec_env, make_env, make_mujoco_env
+from baselines.common.cmd_util import make_vec_env
 
 ncpu = multiprocessing.cpu_count()
 config = tf.ConfigProto(allow_soft_placement=True, intra_op_parallelism_threads=ncpu, inter_op_parallelism_threads=ncpu, log_device_placement=False)
@@ -37,24 +34,7 @@ def make_env():
     env = gym.make(alg_kwargs['env_name'])
     env.set_episode_size(alg_kwargs['nsteps'])
     env = bench.Monitor(env, logger.get_dir() and os.path.join(logger.get_dir()), allow_early_resets=True)
-
     return env
-
-def make_thunk(rank, initializer=None):
-    return lambda: make_env(
-        env_id=env_type,
-        env_type=env_type,
-        mpi_rank=0,
-        subrank=rank,
-        seed=0,
-        reward_scale=1.0,
-        gamestate=None,
-        flatten_dict_observations=True,
-        wrapper_kwargs=None,
-        env_kwargs=None,
-        logger_dir=None,
-        initializer=initializer
-    )
 
 def make_cnn_env():
     env = gym.make(alg_kwargs['env_name'])
@@ -92,7 +72,7 @@ if __name__ == '__main__':
     logger.configure(os.path. abspath(logdir), format_strs)
     log_params(logger, alg_kwargs)
 
-    env = make_vec_env(alg_kwargs['env_name'], env_type, 4, 0, reward_scale=1.0)
+    env = make_vec_env(alg_kwargs['env_name'], env_type, 16, 0, reward_scale=1.0)
 
     learn = get_learn_function('ppo2')
     if alg_kwargs['transfer_path'] is not None and os.path.isfile(logdir  + alg_kwargs['transfer_path']):
