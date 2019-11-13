@@ -79,7 +79,7 @@ if __name__ == '__main__':
     else:
         env = DummyVecEnv([make_env])
     learn = get_learn_function('ppo2')
-    if alg_kwargs['transfer_path'] is not None and os.path.isdir(alg_kwargs['transfer_path']):
+    if alg_kwargs['transfer_path'] is not None and os.path.isfile(alg_kwargs['transfer_path']):
         transfer_path = alg_kwargs['transfer_path']
     if hidden != '':
         alg_kwargs['num_hidden'] = int(hidden)
