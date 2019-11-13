@@ -69,7 +69,7 @@ def mara_lstm():
         total_timesteps = 8640000 * 5,
         save_interval = 10,
         env_name = 'MARARandomTarget-v0',
-        transfer_path = None,
+        transfer_path = 'checkpoints/08640',
     )
 
 def mara_cnn():

@@ -68,7 +68,8 @@ if __name__ == '__main__':
     alg_kwargs = get_learn_function_defaults('ppo2', env_type)
     # timedate = datetime.now().strftime('%Y-%m-%d_%Hh%Mmin')
     logdir = 'logs/{0}/ppo2_{1}_{2}/'.format(alg_kwargs['env_name'], policy, hidden)
-    if os.path.isdir(logdir): clean_logs(logdir)
+    tb_dir = logger + '/tb'
+    if os.path.isdir(logdir): clean_logs(tb_dir)
     format_strs = os.getenv('MARA_LOG_FORMAT', 'stdout,log,csv,tensorboard').split(',')
     logger.configure(os.path. abspath(logdir), format_strs)
     log_params(logger, alg_kwargs)
@@ -78,7 +79,8 @@ if __name__ == '__main__':
     else:
         env = DummyVecEnv([make_env])
     learn = get_learn_function('ppo2')
-    transfer_path = alg_kwargs['transfer_path']
+    if alg_kwargs['transfer_path'] is not None and os.path.isdir(alg_kwargs['transfer_path']):
+        transfer_path = alg_kwargs['transfer_path']
     if hidden != '':
         alg_kwargs['num_hidden'] = int(hidden)
     alg_kwargs.pop('env_name')
