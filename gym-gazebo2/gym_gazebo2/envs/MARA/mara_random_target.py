@@ -186,9 +186,11 @@ class MARARandomTargetEnv(gym.Env):
         self.collided = 0
 
     def sample_position(self):
-        sample = np.random.uniform(0,1)
-        r = np.random.rand(3)
-        return r.tolist()
+        phi = 2 * np.pi * np.random.rand()
+        rad = 0.3
+        z = 0.25
+        r = [rad * np.cos(phi), rad * np.sin(phi), z]
+        return r
         #if sample > 0.5:
         #    return [ -0.5 , 0.2 , 0.25 ]
         #else:
