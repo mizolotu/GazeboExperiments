@@ -148,7 +148,7 @@ class Model(object):
         advs = returns - values
 
         # Normalize the advantages
-        advs = (advs - advs.mean()) / (advs.std() + 1e-8)
+        #advs = (advs - advs.mean()) / (advs.std() + 1e-8)
 
         # pass relu hidden layer with 512, size of the obs, this needs to be added with flag or used somewhere else.
         # obs = tf.nn.relu_layer(tf.layers.dense(obs, 512, name='lin', kernel_initializer=normc_initializer(1.0)))
