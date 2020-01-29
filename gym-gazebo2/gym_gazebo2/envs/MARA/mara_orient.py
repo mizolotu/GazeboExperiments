@@ -335,11 +335,11 @@ class MARAOrientEnv(gym.Env):
 
             info = {"infos":{"ep_dist_max": max_dist_tgt,"ep_dist_mean": mean_dist_tgt,"ep_dist_min": min_dist_tgt,\
                 "ep_rew_max": max_tot_rew,"ep_rew_mean": mean_tot_rew,"ep_rew_min": min_tot_rew,"num_coll": num_coll}}
-            info['r'] = reward
-            info['l'] = self.iterator
             self.buffer_dist_rewards = []
             self.buffer_tot_rewards = []
             self.collided = 0
+        info['r'] = reward
+        info['l'] = self.iterator
 
         # Return the corresponding observations, rewards, etc.
         return obs, reward, done, info
