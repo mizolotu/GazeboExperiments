@@ -79,8 +79,11 @@ if __name__ == '__main__':
         transfer_path = logdir + alg_kwargs['transfer_path']
     else:
         transfer_path = None
-    if hidden != '' and 'num_hidden' in alg_kwargs.keys():
-        alg_kwargs['num_hidden'] = int(hidden)
+    if hidden != '':
+        if 'num_hidden' in alg_kwargs.keys():
+            alg_kwargs['num_hidden'] = int(hidden)
+        elif 'nlstm' in alg_kwargs.keys():
+            alg_kwargs['nlstm'] = int(hidden)
     alg_kwargs.pop('env_name')
     alg_kwargs.pop('transfer_path')
     learner = learn(env=env,load_path=transfer_path, **alg_kwargs)

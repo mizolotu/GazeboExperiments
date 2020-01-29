@@ -53,12 +53,12 @@ def mara_lstm():
     return dict(
         nlstm = 64,
         layer_norm = False,
-        nsteps = 1024,
-        nminibatches = 1, #batchsize = nevn * nsteps // nminibatches
+        nsteps = 125,
+        nminibatches = 4, #batchsize = nevn * nsteps // nminibatches
         lam = 0.95,
         gamma = 0.99,
-        noptepochs = 10,
-        log_interval = 1,
+        noptepochs = 4,
+        log_interval = 10,
         ent_coef = 0.0,
         lr = lambda f: 1e-3 * f,
         cliprange = 0.2,
@@ -67,10 +67,10 @@ def mara_lstm():
         seed = 0,
         value_network = 'shared',
         network = 'lstm',
-        total_timesteps = 8640000 * 5,
+        total_timesteps = 4 * 125 * 1000,
         save_interval = 10,
-        env_name = 'MARARandomTarget-v0',
-        transfer_path = 'checkpoints/best',
+        env_name='MARAOrient-v0',
+        transfer_path='checkpoints/best',
     )
 
 def mara_cnn():
