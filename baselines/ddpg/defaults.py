@@ -25,6 +25,7 @@ def retro():
 
 def mara_mlp():
     return dict(
+        network='mlp',
         num_layers = 2,
         num_hidden = 64,
         layer_norm = False,
