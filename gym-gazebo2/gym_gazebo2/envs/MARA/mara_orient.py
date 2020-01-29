@@ -28,6 +28,8 @@ from geometry_msgs.msg import Pose
 from ros2pkg.api import get_prefix_path
 from builtin_interfaces.msg import Duration
 
+from collections import deque
+
 # Algorithm specific
 from PyKDL import ChainJntToJacSolver # For KDL Jacobians
 
@@ -37,6 +39,9 @@ class MARAOrientEnv(gym.Env):
     """
 
     def __init__(self):
+
+        self.stack = 4
+
         """
         Initialize the MARA environemnt
         """
@@ -163,8 +168,15 @@ class MARAOrientEnv(gym.Env):
 
         self.action_space = spaces.Box(low, high)
 
-        high = np.inf*np.ones(self.obs_dim)
-        low = -high
+        if self.stack is not None:
+            self.frames = deque(maxlen=self.stack)
+            self.low_state = - np.ones((self.stack, 1)) * np.inf*np.ones(self.obs_dim)
+            self.high_state = np.ones((self.stack, 1)) * np.inf*np.ones(self.obs_dim)
+        else:
+            self.frames = None
+            self.high_state = np.inf*np.ones(self.obs_dim)
+            self.low_state = -self.high_state
+
         self.observation_space = spaces.Box(low, high)
 
         # Spawn Target element in gazebo.
@@ -309,11 +321,17 @@ class MARAOrientEnv(gym.Env):
         self.ros_clock = rclpy.clock.Clock().now().nanoseconds
 
         # Take an observation
-        obs = self.take_observation()
+        obs_last = self.take_observation()
+
+        if self.frames is not None:
+            self.frames.append(obs_last)
+            obs = np.array([x for x in self.frames])
+        else:
+            obs = obs_last
 
         # Fetch the positions of the end-effector which are nr_dof:nr_dof+3
-        rewardDist = ut_math.rmseFunc(obs[self.numJoints:(self.numJoints+3)])
-        rewardOrientation = 2 * np.arccos(abs(obs[self.numJoints+3]))
+        rewardDist = ut_math.rmseFunc(obs_last[self.numJoints:(self.numJoints+3)])
+        rewardOrientation = 2 * np.arccos(abs(obs_last[self.numJoints+3]))
 
         collided = self.collision()
 
@@ -361,7 +379,14 @@ class MARAOrientEnv(gym.Env):
         self.ros_clock = rclpy.clock.Clock().now().nanoseconds
 
         # Take an observation
-        obs = self.take_observation()
+        obs_last = self.take_observation()
+
+        if self.frames is not None:
+            while len(self.frames) < self.frames.maxlen:
+                self.frames.append(self.state)
+            obs = np.array([x for x in self.frames])
+        else:
+            obs = self.state
 
         # Return the corresponding observation
         return obs
