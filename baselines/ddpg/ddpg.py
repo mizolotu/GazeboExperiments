@@ -18,7 +18,7 @@ try:
 except ImportError:
     MPI = None
 
-def learn(network, env, total_timesteps,
+def learn(network, env, total_timesteps=None,
           nsteps=None,
           log_interval=None,
           seed=None,
