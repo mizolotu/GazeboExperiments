@@ -131,6 +131,8 @@ def learn(network, env, total_timesteps=None,
 
         for cycle in range(nb_epoch_cycles):
 
+            print(cycle)
+
             #obs = np.zeros((nenvs, nsteps, env.observation_space.shape[0]))
             mask = np.ones((nenvs, nsteps))
 

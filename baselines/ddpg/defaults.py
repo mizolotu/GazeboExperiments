@@ -29,7 +29,6 @@ def mara_mlp():
         num_hidden = 64,
         layer_norm = False,
         nsteps = 125,
-        nminibatches = 4, #batchsize = nevn * nsteps // nminibatches
         log_interval = 10,
         env_name='MARAOrient-v0',
         transfer_path = 'checkpoints/best',
