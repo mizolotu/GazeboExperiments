@@ -74,7 +74,9 @@ if __name__ == '__main__':
     log_params(logger, alg_kwargs)
 
     env = make_vec_env(alg_kwargs['env_name'], env_type, 4, 0, reward_scale=1.0)
-
+    if 'cnn' in policy:
+        env = FrameStack(env, alg_kwargs['num_stack'])
+        alg_kwargs.pop('num_stack')
     learn = get_learn_function(alg_name)
     if alg_kwargs['transfer_path'] is not None and os.path.isfile(logdir  + alg_kwargs['transfer_path']):
         transfer_path = logdir + alg_kwargs['transfer_path']
