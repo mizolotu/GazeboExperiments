@@ -87,6 +87,6 @@ if __name__ == '__main__':
             alg_kwargs['nlstm'] = int(hidden)
     alg_kwargs.pop('env_name')
     alg_kwargs.pop('transfer_path')
-    learner = learn(env=env,load_path=transfer_path, **alg_kwargs)
+    learner = learn(env=env, **alg_kwargs)
     env.dummy().gg2().close()
     os.kill(os.getpid(), 9)
