@@ -323,14 +323,6 @@ class MARAOrientEnv(gym.Env):
         # Take an observation
         obs_last = self.take_observation()
 
-        print('\n')
-        print('\n')
-        print('\n')
-        print(obs_last)
-        print('\n')
-        print('\n')
-        print('\n')
-
         if self.frames is not None:
             self.frames.append(obs_last)
             obs = np.array([x for x in self.frames])
