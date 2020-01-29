@@ -79,7 +79,7 @@ if __name__ == '__main__':
         transfer_path = logdir + alg_kwargs['transfer_path']
     else:
         transfer_path = None
-    if hidden != '':
+    if hidden != '' and 'num_hidden' in alg_kwargs.keys():
         alg_kwargs['num_hidden'] = int(hidden)
     alg_kwargs.pop('env_name')
     alg_kwargs.pop('transfer_path')
