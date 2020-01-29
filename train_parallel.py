@@ -64,7 +64,7 @@ if __name__ == '__main__':
     policy = sys.argv[1].split('_')[1]
     hidden = sys.argv[1].split('_')[2]
     env_type = 'mara_{0}'.format(policy)
-    alg_kwargs = get_learn_function_defaults('ppo2', env_type)
+    alg_kwargs = get_learn_function_defaults(alg_name, env_type)
     # timedate = datetime.now().strftime('%Y-%m-%d_%Hh%Mmin')
     logdir = 'logs/{0}/{1}_{2}_{3}/'.format(alg_kwargs['env_name'], alg_name, policy, hidden)
     tb_dir = logdir + '/tb'
