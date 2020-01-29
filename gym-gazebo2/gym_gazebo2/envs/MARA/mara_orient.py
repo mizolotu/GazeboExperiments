@@ -383,10 +383,10 @@ class MARAOrientEnv(gym.Env):
 
         if self.frames is not None:
             while len(self.frames) < self.frames.maxlen:
-                self.frames.append(self.state)
+                self.frames.append(obs_last)
             obs = np.array([x for x in self.frames])
         else:
-            obs = self.state
+            obs = obs_last
 
         # Return the corresponding observation
         return obs
