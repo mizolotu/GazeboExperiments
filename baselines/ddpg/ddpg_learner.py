@@ -71,7 +71,7 @@ class DDPG(object):
         batch_size=128, observation_range=(-5., 5.), action_range=(-1., 1.), return_range=(-np.inf, np.inf),
         critic_l2_reg=0., actor_lr=1e-4, critic_lr=1e-3, clip_norm=None, reward_scale=1.):
 
-        tf.reset_default_graph()
+        #tf.reset_default_graph()
 
         # Inputs.
 
