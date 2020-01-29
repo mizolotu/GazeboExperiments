@@ -27,8 +27,6 @@ class Model(object):
     """
     def __init__(self, *, policy, ob_space, ac_space, nbatch_act, nbatch_train, nsteps, ent_coef, vf_coef, max_grad_norm, mpi_rank_weight=1, comm=None, microbatch_size=None):
 
-        tf.reset_default_graph()
-
         self.sess = sess = get_session()
 
         if MPI is not None and comm is None:
