@@ -177,7 +177,7 @@ class MARAOrientEnv(gym.Env):
             self.high_state = np.inf*np.ones(self.obs_dim)
             self.low_state = -self.high_state
 
-        self.observation_space = spaces.Box(low, high)
+        self.observation_space = spaces.Box(self.low_state, self.high_state)
 
         # Spawn Target element in gazebo.
         # node & spawn_cli initialized in super class
