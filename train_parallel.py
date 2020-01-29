@@ -60,9 +60,9 @@ def clean_logs(log_dir):
             print(e)
 
 if __name__ == '__main__':
-    alg_name = sys.argv[1]
-    policy = sys.argv[2].split('_')[0]
-    hidden = sys.argv[2].split('_')[1]
+    alg_name = sys.argv[1].split('_')[0]
+    policy = sys.argv[1].split('_')[1]
+    hidden = sys.argv[1].split('_')[2]
     env_type = 'mara_{0}'.format(policy)
     alg_kwargs = get_learn_function_defaults('ppo2', env_type)
     # timedate = datetime.now().strftime('%Y-%m-%d_%Hh%Mmin')
